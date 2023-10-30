@@ -2,8 +2,8 @@
 
 ## Concepts
 
-- Test runner (jest, vitest, jasmine, mocha)
-- Test file (.(spec|test).(js|jsx|ts|tsx))
+- Test runner
+- Test file
 - Test suite
 - Test case
 - SUD - System under test
@@ -28,8 +28,8 @@
 
 ## Configuration
 
-- global
-- environment
+- global = false
+- environment = 'node'
 - testTimeout = 5000
 - globalSetup (run once)
 - setupFiles (run for each test file)
@@ -44,30 +44,39 @@
   - .todo
   - .skip
   - .only
-- beforeAll/beforeEach/afterAll/afterEach (setup/teardown)
-- expect (assertion)
+- beforeAll/beforeEach (setup)
+- afterAll/afterEach (teardown)
+- expect(expected).toBe(actual) (assertion)
 
 ### Mocking
 
-- vi.stubEnv/vi.unstubAllEnvs
 - mock = vi.fn()
-- vi.mock('module1', () => {
-  const realModule = await vi.importActual('module1');
-  return {...realModule, api1: vi.mock()}
-  })
-- mock.mockClear/mock.mockReset/mockRestore
-- vi.clearAllMocks/vi.resetAllMocks/vi.restoreAllMocks
 - spy = vi.spyOn(object, 'method')
-- expect(mock/spy).toHaveBeenCalled()
-- expect(mock/spy).toHaveBeenCalledTimes(2)
-- vi.stubGlobal('key', mock)
+- mock.mockImplementation()/mock.mockImplementationOnce()
+- mock.mockReturnValue()/mock.mockReturnValueOnce()
+- mock.mockResolvedValue()/mock.mockResolvedValueOnce()
+- mock.mockRejectedValue()/mock.mockRejectedValueOnce()
+- mock.calls
+- mock.results
+- expect(mock).toHaveBeenCalled()
+- expect(mock).toHaveBeenCalledWith()
+- expect(mock).toHaveBeenCalledTimes()
+- mock.mockClear()/mock.mockReset()/mock.mockRestore()
+- vi.clearAllMocks()/vi.resetAllMocks()/vi.restoreAllMocks()
+- vi.mock('module', factory)
 - vi.importActual('module')
-- vi.useFakeTimers/vi.useRealTimers/vi.setSystemTime
-- vi.advanceTimersByTime/vi.advanceTimersByTimeAsync
-- vi.advanceTimersToNextTimer/vi.advanceTimersToNextTimerAsync
+- vi.stubGlobal('global', mock)
+- vi.stubEnv('env', value)/vi.unstubAllEnvs()
+
+#### Timers
+
+- vi.useFakeTimers()/vi.useRealTimers()
+- vi.setSystemTime()
+- vi.advanceTimersByTime()/vi.advanceTimersByTimeAsync()
+- vi.advanceTimersToNextTimer()/vi.advanceTimersToNextTimerAsync()
 
 ### Test types
 
-- Unit (test single unit only) A -> B -> C -> D
-- Integration (test multiple units, but not the whole system) A -> B -> C -> D
+- Unit (test single unit only) A -> B -> C
+- Integration (test multiple units, but not the whole system) A -> B -> C
 - E2E (test whole system)
