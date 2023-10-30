@@ -26,9 +26,8 @@ export class Calc {
     operator: '',
   };
 
-  input(commandStr: string) {
-    const commands = commandStr.split('');
-    for (const command of commands) {
+  input(commands: string) {
+    for (const command of commands.split('')) {
       this.inputSingle(command);
     }
   }
