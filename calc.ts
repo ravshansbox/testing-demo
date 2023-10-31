@@ -1,23 +1,6 @@
-import { TElementOf } from './types';
-
-const numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'] as const;
-const operators = ['+', '-', '*', '/'] as const;
-
-type TNumber = TElementOf<typeof numbers>;
-type TOperator = TElementOf<typeof operators>;
-
-const doMath = (operator: TOperator, operand1: number, operand2: number) => {
-  switch (operator) {
-    case '+':
-      return operand1 + operand2;
-    case '-':
-      return operand1 - operand2;
-    case '*':
-      return operand1 * operand2;
-    case '/':
-      return operand1 / operand2;
-  }
-};
+import { numbers, operators } from './constants';
+import { TNumber, TOperator } from './types';
+import { doMath } from './utils';
 
 export class Calc {
   state = {
