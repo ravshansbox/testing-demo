@@ -56,8 +56,6 @@
 - mock.mockReturnValue()/mock.mockReturnValueOnce()
 - mock.mockResolvedValue()/mock.mockResolvedValueOnce()
 - mock.mockRejectedValue()/mock.mockRejectedValueOnce()
-- mock.calls
-- mock.results
 - expect(mock).toHaveBeenCalled()
 - expect(mock).toHaveBeenCalledWith()
 - expect(mock).toHaveBeenCalledTimes()
@@ -65,7 +63,7 @@
 - vi.clearAllMocks()/vi.resetAllMocks()/vi.restoreAllMocks()
 - vi.mock('module', factory)
 - vi.importActual('module')
-- vi.stubGlobal('global', mock)
+- vi.stubGlobal('global', mock)/vi.unstubAllGlobals();
 - vi.stubEnv('env', value)/vi.unstubAllEnvs()
 
 #### Timers
